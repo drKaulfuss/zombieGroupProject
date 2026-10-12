@@ -68,8 +68,8 @@ public class Game
         Setup.fillWorld(residents, floorItems);
 
         Random rand = new Random();
-        row = rand.nextInt((ROWS) - 1);
-        col = rand.nextInt((COLS) - 1);
+        row = rand.nextInt(ROWS) - 1;
+        col = rand.nextInt(COLS) - 1;
         visited[row][col] = true;
 
         boolean quit = false;
