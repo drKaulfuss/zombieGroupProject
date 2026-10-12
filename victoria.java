@@ -1,7 +1,7 @@
-public class Player extends Character {
+public class victoria extends Character {
     
 //constructor
-  public Player(){
+  public victoria(){
     super(victoria, 100, 1600);
     this.iq = iq;   
   } 
