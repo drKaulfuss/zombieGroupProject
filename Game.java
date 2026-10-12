@@ -81,29 +81,13 @@ public class Game
             System.out.println("(M)ove  (S)tats  (I)tems  (T)alk  (Q)uit");
             String choice = Input.ask("> ").toUpperCase();
 
-            if (choice.equals("M"))
-            {
-                move();
-            }
-            else if (choice.equals("S"))
-            {
-                showStats();
-            }
-            else if (choice.equals("I"))
-            {
-                useItem();
-            }
-            else if (choice.equals("T"))
-            {
-                talk();
-            }
-            else if (choice.equals("Q"))
-            {
-                quit = true;
-            }
-            else
-            {
-                System.out.println("I don't understand that choice.");
+            switch(choice.charAt(0)) {
+                case 'M' -> move();
+                case 'S' -> showStats();
+                case 'I' -> useItem();
+                case 'T' -> talk();
+                case 'Q' -> quit = true;
+                default -> System.out.println("I don't understand that choice.");
             }
         }
 
@@ -135,26 +119,12 @@ public class Game
         int newRow = row;
         int newCol = col;
 
-        if (direction.equals("N"))
-        {
-            newRow--;
-        }
-        else if (direction.equals("S"))
-        {
-            newRow++;
-        }
-        else if (direction.equals("E"))
-        {
-            newCol++;
-        }
-        else if (direction.equals("W"))
-        {
-            newCol--;
-        }
-        else
-        {
-            System.out.println("That's not a direction.");
-            return;
+        switch (direction.charAt(0)) {
+            case 'N' -> newRow--;
+            case 'S' -> newRow++;
+            case 'E' -> newCol++;
+            case 'W' -> newCol--;
+            default -> System.out.println("That's not a direction.");
         }
 
         // Make sure we stay inside the 2D array!
@@ -249,31 +219,22 @@ public class Game
 
             boolean turnUsed = false;
 
-            if (choice.equals("A"))
-            {
-                player.attack(enemy);
-                turnUsed = true;
-            }
-            else if (choice.equals("U"))
-            {
-                turnUsed = useItem();
-            }
-            else if (choice.equals("R"))
-            {
-                if (Math.random() < 0.5)
-                {
-                    System.out.println("You manage to escape!");
-                    escaped = true;
+            switch(choice.charAt(0)) {
+                case 'A' -> {player.attack(enemy); turnUsed = true;}
+                case 'U' -> turnUsed = useItem();
+                case 'R' -> {
+                    if (Math.random() < 0.5)
+                    {
+                        System.out.println("You manage to escape!");
+                        escaped = true;
+                    }
+                    else
+                    {
+                        System.out.println("You couldn't get away!");
+                    }
+                    turnUsed = true;
                 }
-                else
-                {
-                    System.out.println("You couldn't get away!");
-                }
-                turnUsed = true;
-            }
-            else
-            {
-                System.out.println("I don't understand that choice.");
+                default -> System.out.println("I don't understand that choice.");
             }
 
             // The enemy takes a turn if it's still alive and the player didn't escape.
