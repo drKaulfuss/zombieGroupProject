@@ -21,8 +21,8 @@ import java.util.Random;
 public class Game
 {
     // The size of the world. Change these to make a bigger or smaller map.
-    private static final int ROWS = 5;
-    private static final int COLS = 5;
+    private static final int ROWS = 10;
+    private static final int COLS = 20;
 
     private Character player;
 
@@ -68,8 +68,8 @@ public class Game
         Setup.fillWorld(residents, floorItems);
 
         Random rand = new Random();
-        row = rand.nextInt(ROWS);
-        col = rand.nextInt(COLS);
+        row = (int)(Math.random() * ROWS);
+        col = (int)(Math.random() * COLS);
         visited[row][col] = true;
 
         boolean quit = false;
@@ -282,7 +282,7 @@ public class Game
     {
         ArrayList<Item> bag = player.getInventory();
 
-        if (bag.size() == 0)
+        if (bag.isEmpty())
         {
             System.out.println("Your bag is empty.");
             return false;
