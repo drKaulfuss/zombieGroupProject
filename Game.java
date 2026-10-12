@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Game - the main program. Run THIS file to play.
@@ -66,8 +67,9 @@ public class Game
         player = Setup.createPlayer(name);
         Setup.fillWorld(residents, floorItems);
 
-        row = 0;
-        col = 0;
+        Random rand = new Random();
+        row = rand.nextInt((ROWS - 0) + 1);
+        col = rand.nextInt((COLS - 0) + 1);
         visited[row][col] = true;
 
         boolean quit = false;
