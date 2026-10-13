@@ -65,7 +65,7 @@ public class Game
 
         // Setup.java builds the player and fills the map.
         player = Setup.createPlayer(name);
-        Setup.fillWorld(residents, floorItems);
+        Setup.fillWorld(residents, floorItems, ROWS, COLS);
 
         Random rand = new Random();
         row = (int)(Math.random() * ROWS);
