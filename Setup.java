@@ -48,7 +48,7 @@ public class Setup
         residents[1][1] = new Character("Goblin", 15, 2);
         residents[2][3] = new Character("Skeleton", 20, 3);
         residents[0][4] = new Character("Wolf", 18, 3);
-        residents[3][3] = new BaddieBartender();
+        //residents[3][3] = new BaddieBartender();
 
         // TODO (Shopkeeper team): add a Shopkeeper somewhere, for example:
         //     residents[3][1] = new Shopkeeper();
