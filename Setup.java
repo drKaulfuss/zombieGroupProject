@@ -83,10 +83,6 @@ public class Setup
         System.out.println("Dragon at" + pos[0] + "   " + pos[1]);
         residents[pos[0]][pos[1]] = new Character("Dragon", 35, 4);
 
-        pos = randomPos(residents, ROWS, COLS);
-        // residents[pos[0]][pos[1]] = new BaddieBartender();
-        residents[1][1] = new BaddieBartender();
-
         // ---------------------- ITEMS ----------------------
         // TODO (Items team): add Weapons, Coins, Potions, Armor, MagicItems...
         //     floorItems[0][2] = new Coin(10);
