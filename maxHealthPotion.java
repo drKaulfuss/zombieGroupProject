@@ -1,4 +1,4 @@
-/**
+/**ssss
  * Item - the PARENT class for everything a character can find, carry, or use.
  *
  * Students: you will write SUBCLASSES of Item (Weapon, Coin, Potion, Armor,
@@ -8,8 +8,7 @@
  * An Item that is NOT a subclass (just "new Item(...)") is a plain object:
  * it can be carried and sold, but it does nothing special.
  */
-public class maxHealthPotion extends Character
-  super(int health, int maxHealth);
+public class maxHealthPotion extends Item
 {
     // ------------------------------------------------------------
     // Instance variables are PRIVATE (encapsulation).
@@ -27,10 +26,10 @@ public class maxHealthPotion extends Character
      */
     public maxHealthPotion(String name, String description, int value, int healingValue)
     {
-        this.name = name;
-        this.description = description;
-        this.value = value;
+        super(name, description, value);
+    
         this.healingValue = healingValue;
+    
     }
 
     // ---------------- Accessor methods (getters) ----------------
@@ -87,11 +86,8 @@ public class maxHealthPotion extends Character
         return true;
 
     }
-    public void setHealing(int healingValue){
-        this.healingValue = maxHealth;
-    }
-    public int getHealing() {
-        return this.healingValue;
+    public void setHealing(Character foo){
+        foo.heal(foo.getMaxHealth()-foo.getHealth());
     }
 
     /**
