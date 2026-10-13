@@ -58,25 +58,29 @@ public class Setup
         // TODO (Monster team):  replace these plain Characters with your
         //                       own subclasses (Goblin, Skeleton, ...)
 
-        int [] pos = randomPos(residents, ROWS, COLS);
-        System.out.println(pos[0] + "   " + pos[1]);
-
-        residents[pos[0]][pos[1]] = new Character("Goblin", 15, 2);
-
-        pos = randomPos(residents, ROWS, COLS);
-        System.out.println(pos[0] + "   " + pos[1]);
-        residents[pos[0]][pos[1]] = new Character("Skeleton", 20, 3);
-
-        pos = randomPos(residents, ROWS, COLS);
-        System.out.println(pos[0] + "   " + pos[1]);
-        residents[pos[0]][pos[1]] = new Character("Wolf", 18, 3);
-
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLS; j++) {
+                if (i == 1 && j == 1) {
+                    residents[i][j] = new BaddieBartender();
+                } else if (Math.random() < 0.05) {
+                    String tempName = switch ((int)(Math.random() * 3)) {
+                        case 0 -> "Goblin";
+                        case 1 -> "Wolf";
+                        case 2 -> "Skeleton";
+                        default -> "Zombie";
+                    };
+                    System.out.printf("%s at (%d, %d)\n", tempName, i, j);
+                    // Randomizes the mob's stats just a little, based on the range for the original mobs
+                    residents[i][j] = new Character(tempName, (int)(Math.random() * 6) + 15, (int)(Math.random() * 2) + 1);
+                }
+            }
+        }
         // TODO (Shopkeeper team): add a Shopkeeper somewhere, for example:
         //     residents[3][1] = new Shopkeeper();
 
         // TODO (Boss team): replace the Dragon with your Boss subclass
-        pos = randomPos(residents, ROWS, COLS);
-        System.out.println(pos[0] + "   " + pos[1]);
+        int[] pos = randomPos(residents, ROWS, COLS);
+        System.out.println("Dragon at" + pos[0] + "   " + pos[1]);
         residents[pos[0]][pos[1]] = new Character("Dragon", 35, 4);
 
         pos = randomPos(residents, ROWS, COLS);
