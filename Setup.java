@@ -57,13 +57,6 @@ public class Setup
         // ------------------- CHARACTERS -------------------
         // TODO (Monster team):  replace these plain Characters with your
         //                       own subclasses (Goblin, Skeleton, ...)
-<<<<<<< HEAD
-        residents[1][1] = new Character("Goblin", 15, 2);
-        residents[2][3] = new Character("Skeleton", 20, 3);
-        residents[0][4] = new Character("Wolf", 18, 3);
-        //residents[3][3] = new BaddieBartender();
-=======
-
 
         int [] pos = randomPos(residents, ROWS, COLS);
         System.out.println(pos[0] + "   " + pos[1]);
@@ -77,7 +70,6 @@ public class Setup
         pos = randomPos(residents, ROWS, COLS);
         System.out.println(pos[0] + "   " + pos[1]);
         residents[pos[0]][pos[1]] = new Character("Wolf", 18, 3);
->>>>>>> 6daa5ceff63e06db18fdafb7793d9b33d5a9d67f
 
         // TODO (Shopkeeper team): add a Shopkeeper somewhere, for example:
         //     residents[3][1] = new Shopkeeper();
@@ -91,7 +83,15 @@ public class Setup
         // TODO (Items team): add Weapons, Coins, Potions, Armor, MagicItems...
         //     floorItems[0][2] = new Coin(10);
         //     floorItems[3][3] = new Weapon("Iron Sword", 4);
-        floorItems[0][2] = new Item("Shiny Rock", "It looks pretty but does nothing.", 5);
+        for (int i = 0; i < Game.getRows(); i++) {
+            for (int j = 0; j < Game.getCols(); j++) {
+                if (Math.random() < 0.1) {
+                    floorItems[i][j] = new Item("Shiny Rock", "It looks pretty but does nothing.", 5);
+                }
+            }
+        }
     }
+
+
 
 }
