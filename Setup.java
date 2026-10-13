@@ -65,17 +65,22 @@ public class Setup
                 if (i == bartenderRow && j == bartenderCol) {
                     System.out.printf("%s at (%d, %d)\n", "Baddiella", bartenderRow, bartenderCol);
                     residents[i][j] = new BaddieBartender();
-                } else if (Math.random() < 0.05) {
-                    // Spawn a random generic monster
-                    String tempName = switch ((int)(Math.random() * 3)) {
-                        case 0 -> "Goblin";
-                        case 1 -> "Wolf";
-                        case 2 -> "Skeleton";
-                        default -> "Zombie";
-                    };
-                    System.out.printf("%s at (%d, %d)\n", tempName, i, j);
-                    // Randomizes the mob's stats just a little, based on the range for the original mobs
-                    residents[i][j] = new Character(tempName, (int)(Math.random() * 6) + 15, (int)(Math.random() * 2) + 1);
+                } else if (Math.random() < 0.05) { // Spawn a random mob
+                    double spawnSeed = Math.random();
+                    if (spawnSeed < 0.3) { // Spawn a Slime
+                        System.out.printf("%s at (%d, %d)\n", "Slime", i, j);
+                        residents[i][j] = new Slime();
+                    } else { // Spawn a random generic monster
+                        String tempName = switch ((int)(Math.random() * 3)) {
+                            case 0 -> "Goblin";
+                            case 1 -> "Wolf";
+                            case 2 -> "Skeleton";
+                            default -> "Zombie";
+                        };
+                        System.out.printf("%s at (%d, %d)\n", tempName, i, j);
+                        // Randomizes the mob's stats just a little, based on the range for the original mobs
+                        residents[i][j] = new Character(tempName, (int)(Math.random() * 6) + 15, (int)(Math.random() * 2) + 1);
+                    }
                 }
             }
         }
