@@ -8,8 +8,7 @@
  * An Item that is NOT a subclass (just "new Item(...)") is a plain object:
  * it can be carried and sold, but it does nothing special.
  */
-public class maxHealthPotion extends Character
-  super(int health, int maxHealth);
+public class maxHealthPotion
 {
     // ------------------------------------------------------------
     // Instance variables are PRIVATE (encapsulation).
