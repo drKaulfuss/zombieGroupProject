@@ -16,7 +16,9 @@ public class Gamble {
 
     // Constructor
     public Gamble(Character player) {
+        System.out.println("Gamble Constructor Called"); // never gets called???
         this.player = player;
+        System.out.println(this.player);
         this.chips = 0;
         this.scanner = new Scanner(System.in);
         this.random = new Random();
@@ -28,6 +30,7 @@ public class Gamble {
 
     // Main entry point. Shows options and loops until the player exits.
 public void gambleMenu() {
+    System.out.println(this.player);
     System.out.println("Welcome to the gamble menu!");
     System.out.println("1. Coin Flip");
     System.out.println("2. Slots");
@@ -103,6 +106,7 @@ public void gambleMenu() {
         else {
             System.out.print("Error occured or not enough coins");
         }
+        System.out.print("error");
     }
 
     // Turns chips into coins (1 chip = 9 coins) and adds them to the wallet.
@@ -118,6 +122,7 @@ public void gambleMenu() {
         else{
             System.out.print("Error occured or not enough coins");
         }
+        
 
 
     }
