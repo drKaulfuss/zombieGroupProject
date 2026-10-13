@@ -7,6 +7,7 @@ public class Deather extends Item{
     public int getAttackBonus(){
         return damage;
     }
+    // IF you correctly say the name it will one hit kill any boss
     public String encantation(){
         System.out.print("You must say the Deathers name 3 times");
         String first = Input.ask("Say its name");
