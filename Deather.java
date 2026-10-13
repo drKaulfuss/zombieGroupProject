@@ -1,7 +1,7 @@
 public class Deather extends Item{
     private int damage = 0;
     public Deather(int value, int damage){
-        super("Deather", "This is juts a feather but say its name 3 times and it will become deadly",value);
+        super("Deather", "This is just an ordinary feather... right...?",value);
         this.damage = damage;
     }
     public int getAttackBonus(){
