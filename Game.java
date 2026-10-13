@@ -387,4 +387,12 @@ public class Game
         }
         return count;
     }
+
+    public static int getRows() {
+        return ROWS;
+    }
+
+    public static int getCols() {
+        return COLS;
+    }
 }
