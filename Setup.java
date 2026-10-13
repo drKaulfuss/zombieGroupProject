@@ -80,7 +80,8 @@ public class Setup
         residents[pos[0]][pos[1]] = new Character("Dragon", 35, 4);
 
         pos = randomPos(residents, ROWS, COLS);
-        residents[pos[0]][pos[1]] = new BaddieBartender();
+        // residents[pos[0]][pos[1]] = new BaddieBartender();
+        residents[1][1] = new BaddieBartender();
 
         // ---------------------- ITEMS ----------------------
         // TODO (Items team): add Weapons, Coins, Potions, Armor, MagicItems...
