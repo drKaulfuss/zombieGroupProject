@@ -1,4 +1,4 @@
-/**ss
+/**ssss
  * Item - the PARENT class for everything a character can find, carry, or use.
  *
  * Students: you will write SUBCLASSES of Item (Weapon, Coin, Potion, Armor,
@@ -86,11 +86,8 @@ public class maxHealthPotion extends Item
         return true;
 
     }
-    public void setHealing(int healingValue){
-        this.healingValue = maxHealth;
-    }
-    public int getHealing() {
-        return this.healingValue;
+    public void setHealing(Character foo){
+        foo.heal(foo.getMaxHealth()-foo.getHealth());
     }
 
     /**

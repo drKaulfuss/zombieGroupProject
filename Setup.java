@@ -57,6 +57,12 @@ public class Setup
         // ------------------- CHARACTERS -------------------
         // TODO (Monster team):  replace these plain Characters with your
         //                       own subclasses (Goblin, Skeleton, ...)
+<<<<<<< HEAD
+        residents[1][1] = new Character("Goblin", 15, 2);
+        residents[2][3] = new Character("Skeleton", 20, 3);
+        residents[0][4] = new Character("Wolf", 18, 3);
+        //residents[3][3] = new BaddieBartender();
+=======
 
 
         int [] pos = randomPos(residents, ROWS, COLS);
@@ -71,6 +77,7 @@ public class Setup
         pos = randomPos(residents, ROWS, COLS);
         System.out.println(pos[0] + "   " + pos[1]);
         residents[pos[0]][pos[1]] = new Character("Wolf", 18, 3);
+>>>>>>> 6daa5ceff63e06db18fdafb7793d9b33d5a9d67f
 
         // TODO (Shopkeeper team): add a Shopkeeper somewhere, for example:
         //     residents[3][1] = new Shopkeeper();
