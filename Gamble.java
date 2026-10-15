@@ -259,7 +259,7 @@ public class Gamble {
                 return;
             }
             System.out.println("Click. You survived and won " + (bet * 6) + " chips");
-            winBet(bet, 6);
+            winBet(bet, 2);
         } while (askPlayAgain());
         System.out.println("You have " + chips + " chips.");
     }
