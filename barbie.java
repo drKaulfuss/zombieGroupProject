@@ -1,4 +1,5 @@
 import java.util.*;
+// barbie's purpose is to spread positivity :) 
 public class barbie extends Character {
 
   private int iq;
@@ -18,12 +19,10 @@ public void interact(Character Player) {
   if(one == "good"){
     System.out.println("YAY, you go girl.");
   } else if(one == "bad"){
-    System.out.println("oh no :(. remember you're unstoppable!");
+    System.out.println("oh no :( remember you're unstoppable!");
   } else{
     System.out.println("What's wrong with you, enter valid input!!"); 
   }
 }
-
-
 
 }
