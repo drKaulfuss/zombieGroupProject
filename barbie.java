@@ -1,4 +1,5 @@
 import java.util.*;
+// barbie's purpose is to spread positivity :) 
 public class barbie extends Character {
 
   private int iq;
