@@ -77,7 +77,7 @@ public class Setup
                             case 2 -> "Skeleton";
                             default -> "Zombie";
                         };
-                        System.out.printf("%s at (%d, %d)\n", tempName, i, j);
+                        System.out.printf("%s at (%d, %d)\n", tempName, i + 1, j + 1);
                         // Randomizes the mob's stats just a little, based on the range for the original mobs
                         residents[i][j] = new Character(tempName, (int)(Math.random() * 6) + 15, (int)(Math.random() * 2) + 1);
                     }
