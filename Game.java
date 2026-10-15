@@ -23,7 +23,8 @@ public class Game
     // The size of the world. Change these to make a bigger or smaller map.
     private static final int ROWS = 10;
     private static final int COLS = 20;
-
+private Period period = new Period();
+private String gender;
     private Character player;
     private Gamble gamble = new Gamble();   // opened from anywhere with 'G'
 
@@ -62,8 +63,7 @@ public class Game
         System.out.println("      THE QUEST BEGINS");
         System.out.println("==============================");
         String name = Input.ask("What is your name, hero? ");
-        String gender = Input.ask("What is your gender, fool? ");
-
+        gender = Input.ask("What is your gender, fool? ");
 
         // Setup.java builds the player and fills the map.
         player = Setup.createPlayer(name);
@@ -219,7 +219,7 @@ try {
     {
         System.out.println();
         System.out.println("*** " + enemy.getName() + " blocks your path! ***");
-
+        period.onBattleStart(enemy, gender);
         boolean escaped = false;
 
         while (player.isAlive() && enemy.isAlive() && !escaped)
@@ -255,6 +255,7 @@ try {
                 enemy.takeTurn(player);     // Boss, Thief, etc. may override this!
             }
         }
+        period.onBattleEnd(player);
     }
 
     /**
