@@ -54,6 +54,32 @@ public class Setup
 
     public static void fillWorld(Character[][] residents, Item[][] floorItems, int ROWS, int COLS)
     {
+        // ---------------------- ITEMS ----------------------
+        // TODO (Items team): add Weapons, Coins, Potions, Armor, MagicItems...
+        // floorItems[0][2] = new Coin(10);
+        // floorItems[3][3] = new Weapon("Iron Sword", 4);
+        int[] deatherRows = {(int)(Math.random() * ROWS), (int)(Math.random() * ROWS)}; // First is the deather, second is the note
+        int[] deatherCols = {(int)(Math.random() * COLS), (int)(Math.random() * COLS)};
+        for (int i = 0; i < Game.getRows(); i++) {
+            for (int j = 0; j < Game.getCols(); j++) {
+                if (i == deatherRows[0] && j == deatherCols[0]) {
+                    floorItems[i][j] = new Deather(1, 1);
+                    System.out.println("Deather at " + (i + 1) + " " + (j + 1));
+                } else if (i == deatherRows[1] && j == deatherCols[1]) {
+                    floorItems[i][j] = new noteForDeather("Mysterious Note", "Says \"Speak Deather Three Time to use the Deather\"", 1);
+                    System.out.println("Deather note at " + (i + 1) + " " + (j + 1));
+                } else if (Math.random() < 0.03) {
+                    floorItems[i][j] = new Item("Max Health Potion", "It's a potion. It looks very appetizing.", 10);
+                    System.out.println("Max Health Potion at " + (i + 1) + " " + (j + 1));
+                } else if (Math.random() < 0.05) {
+                    floorItems[i][j] = new Medpill();
+                    System.out.println("Medpill at " + (i + 1) + " " + (j + 1));
+                } else if (Math.random() < 0.1) {
+                    floorItems[i][j] = new Item("Shiny Rock", "It looks pretty but does nothing.", 5);
+                    System.out.println("Shiny Rock at " + (i + 1) + " " + (j + 1));
+                }
+            }
+        }
         // ------------------- CHARACTERS -------------------
         // TODO (Monster team):  replace these plain Characters with your
         //                       own subclasses (Goblin, Skeleton, ...)
@@ -98,33 +124,5 @@ public class Setup
         int[] pos = randomPos(residents, ROWS, COLS);
         System.out.println("Dragon at" + (pos[0] + 1) + " " + (pos[1] + 1));
         residents[pos[0]][pos[1]] = new Character("Dragon", 35, 4);
-
-
-
-
-        // ---------------------- ITEMS ----------------------
-        // TODO (Items team): add Weapons, Coins, Potions, Armor, MagicItems...
-        //     floorItems[0][2] = new Coin(10);
-        //     floorItems[3][3] = new Weapon("Iron Sword", 4);
-        int[] deatherRows = {(int)(Math.random()*ROWS), (int)(Math.random()*ROWS)}; // First is the deather, second is the note
-        int[] deatherCols = {(int)(Math.random()*COLS), (int)(Math.random()*COLS)};
-        for (int i = 0; i < Game.getRows(); i++) {
-            for (int j = 0; j < Game.getCols(); j++) {
-                if (i == deatherRows[0] && j == deatherCols[0]) {
-                    floorItems[i][j] = new Deather(1, 1);
-                } else if (i == deatherRows[1] && j == deatherCols[1]) {
-                    floorItems[i][j] = new noteForDeather("Mysterious Note", "Says \"Speak Deather Three Time to use the Deather\"", 1);
-                } else if (Math.random() < 0.1) {
-                    floorItems[i][j] = new Medpill();
-                } else if (Math.random() < 0.1) {
-                    floorItems[i][j] = new maxHealthPotion("Max Health Potion", "Heals you to max hp", 5, 5);
-                } else if (Math.random() < 0.05) {
-                    floorItems[i][j] = new Item("Shiny Rock", "It looks pretty but does nothing.", 5);
-                }
-            }
-        }
     }
-
-
-
 }
