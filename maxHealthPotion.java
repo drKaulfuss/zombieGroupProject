@@ -14,32 +14,6 @@ public class maxHealthPotion extends Item
         this.healingValue = healingValue;
     
     }
-
-    public String getName()
-    {
-        return name;
-    }
-
-    public String getDescription()
-    {
-        return description;
-    }
-
-    public int getValue()
-    {
-        return value;
-    }
-
-   
-    public int getAttackBonus()
-    {
-        return 0;
-    }
-
-    public int getDefenseBonus()
-    {
-        return 0;
-    }
     
     public boolean onPickup(Character finder) {
         System.out.println("You found: " + name + " - " + description);
