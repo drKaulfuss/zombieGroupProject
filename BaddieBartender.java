@@ -9,7 +9,7 @@ public class BaddieBartender extends Character {
 
     @Override
     public boolean isHostile() {
-        return true; // She is an interactive NPC, not a hostile monster
+        return false; // She is an interactive NPC, not a hostile monster
     }
 
     @Override
@@ -74,9 +74,13 @@ public class BaddieBartender extends Character {
 
             if (drink.equalsIgnoreCase("yes") || drink.equalsIgnoreCase("y")) {
                 System.out.println("Here's a drink for you, baddie!");
-                System.out.println("Have a nice journey!");
+                System.out.println("Have a nice journey! Here's something for the road!");
+                System.out.println("Baddiella gave you her tips:" + "50 gold\n");
+                player.addGold(50);
             } else {
-                System.out.println("Goodbye, gorgeous queen!");
+                System.out.println("Goodbye, gorgeous queen! Here!");
+                System.out.println("Baddiella gave you her tips:" + "50 gold\n");
+                player.addGold(50);
             }
         }
     }
