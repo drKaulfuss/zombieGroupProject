@@ -14,12 +14,6 @@ public class maxHealthPotion extends Item
         this.healingValue = healingValue;
     
     }
-    
-    public boolean onPickup(Character finder) {
-        System.out.println("You found: " + name + " - " + description);
-        return true;
-
-    }
     public void setHealing(Character foo){
         foo.heal(foo.getMaxHealth()-foo.getHealth());
     }
