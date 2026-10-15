@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Game - the main program. Run THIS file to play.
@@ -20,10 +21,11 @@ import java.util.ArrayList;
 public class Game
 {
     // The size of the world. Change these to make a bigger or smaller map.
-    private static final int ROWS = 5;
-    private static final int COLS = 5;
+    private static final int ROWS = 10;
+    private static final int COLS = 20;
 
     private Character player;
+    private Gamble gamble = new Gamble();   // opened from anywhere with 'G'
 
     // 2D arrays: one spot for each square of the map
     private Character[][] residents;   // who lives in each square (null = nobody)
@@ -63,10 +65,10 @@ public class Game
 
         // Setup.java builds the player and fills the map.
         player = Setup.createPlayer(name);
-        Setup.fillWorld(residents, floorItems);
+        Setup.fillWorld(residents, floorItems, ROWS, COLS);
 
-        row = 0;
-        col = 0;
+        row = (int)(Math.random() * ROWS);
+        col = (int)(Math.random() * COLS);
         visited[row][col] = true;
 
         boolean quit = false;
@@ -78,32 +80,17 @@ public class Game
             printMap();
             System.out.println(player + "   Gold: " + player.getGold()
                                + "   Enemies left: " + countHostileLeft());
-            System.out.println("(M)ove  (S)tats  (I)tems  (T)alk  (Q)uit");
+            System.out.println("(M)ove  (S)tats  (I)tems  (T)alk  (G)amble  (Q)uit");
             String choice = Input.ask("> ").toUpperCase();
 
-            if (choice.equals("M"))
-            {
-                move();
-            }
-            else if (choice.equals("S"))
-            {
-                showStats();
-            }
-            else if (choice.equals("I"))
-            {
-                useItem();
-            }
-            else if (choice.equals("T"))
-            {
-                talk();
-            }
-            else if (choice.equals("Q"))
-            {
-                quit = true;
-            }
-            else
-            {
-                System.out.println("I don't understand that choice.");
+            switch(choice.charAt(0)) {
+                case 'M' -> move();
+                case 'S' -> showStats();
+                case 'I' -> useItem();
+                case 'T' -> talk();
+                case 'G' -> gamble.open(player);
+                case 'Q' -> quit = true;
+                default -> System.out.println("I don't understand that choice.");
             }
         }
 
@@ -134,28 +121,18 @@ public class Game
 
         int newRow = row;
         int newCol = col;
-
-        if (direction.equals("N"))
-        {
-            newRow--;
+        try {
+            switch (direction.charAt(0)) {
+                case 'N' -> newRow--;
+                case 'S' -> newRow++;
+                case 'E' -> newCol++;
+                case 'W' -> newCol--;
+                default -> System.out.println("That's not a direction.");
+            }
+        } catch (Exception e) {
+            System.out.println("You need to enter a direction.");
         }
-        else if (direction.equals("S"))
-        {
-            newRow++;
-        }
-        else if (direction.equals("E"))
-        {
-            newCol++;
-        }
-        else if (direction.equals("W"))
-        {
-            newCol--;
-        }
-        else
-        {
-            System.out.println("That's not a direction.");
-            return;
-        }
+        
 
         // Make sure we stay inside the 2D array!
         if (newRow < 0 || newRow >= ROWS || newCol < 0 || newCol >= COLS)
@@ -249,31 +226,22 @@ public class Game
 
             boolean turnUsed = false;
 
-            if (choice.equals("A"))
-            {
-                player.attack(enemy);
-                turnUsed = true;
-            }
-            else if (choice.equals("U"))
-            {
-                turnUsed = useItem();
-            }
-            else if (choice.equals("R"))
-            {
-                if (Math.random() < 0.5)
-                {
-                    System.out.println("You manage to escape!");
-                    escaped = true;
+            switch(choice.charAt(0)) {
+                case 'A' -> {player.attack(enemy); turnUsed = true;}
+                case 'U' -> turnUsed = useItem();
+                case 'R' -> {
+                    if (Math.random() < 0.5)
+                    {
+                        System.out.println("You manage to escape!");
+                        escaped = true;
+                    }
+                    else
+                    {
+                        System.out.println("You couldn't get away!");
+                    }
+                    turnUsed = true;
                 }
-                else
-                {
-                    System.out.println("You couldn't get away!");
-                }
-                turnUsed = true;
-            }
-            else
-            {
-                System.out.println("I don't understand that choice.");
+                default -> System.out.println("I don't understand that choice.");
             }
 
             // The enemy takes a turn if it's still alive and the player didn't escape.
@@ -318,7 +286,7 @@ public class Game
     {
         ArrayList<Item> bag = player.getInventory();
 
-        if (bag.size() == 0)
+        if (bag.isEmpty())
         {
             System.out.println("Your bag is empty.");
             return false;
@@ -422,5 +390,13 @@ public class Game
             }
         }
         return count;
+    }
+
+    public static int getRows() {
+        return ROWS;
+    }
+
+    public static int getCols() {
+        return COLS;
     }
 }
