@@ -94,7 +94,7 @@ try {
                 case 'Q' -> quit = true;
                 default -> System.out.println("I don't understand that choice.");
             }
-        }} catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("You need to enter a choice.");
         }
 
@@ -113,6 +113,7 @@ try {
         {
             System.out.println("You abandon the quest. Goodbye!");
         }
+    }
     }
 
     // ============================================================
