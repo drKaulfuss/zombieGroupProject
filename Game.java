@@ -123,14 +123,18 @@ public class Game
 
         int newRow = row;
         int newCol = col;
-
-        switch (direction.charAt(0)) {
-            case 'N' -> newRow--;
-            case 'S' -> newRow++;
-            case 'E' -> newCol++;
-            case 'W' -> newCol--;
-            default -> System.out.println("That's not a direction.");
+        try {
+            switch (direction.charAt(0)) {
+                case 'N' -> newRow--;
+                case 'S' -> newRow++;
+                case 'E' -> newCol++;
+                case 'W' -> newCol--;
+                default -> System.out.println("That's not a direction.");
+            }
+        } catch (Exception e) {
+            System.out.println("You need to enter a direction.");
         }
+        
 
         // Make sure we stay inside the 2D array!
         if (newRow < 0 || newRow >= ROWS || newCol < 0 || newCol >= COLS)
