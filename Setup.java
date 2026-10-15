@@ -67,7 +67,7 @@ public class Setup
                     residents[i][j] = new BaddieBartender();
                 } else if (Math.random() < 0.05) { // Spawn a random mob
                     double spawnSeed = Math.random();
-                    if (spawnSeed < 0.3) { // Spawn a Slime
+                    if (spawnSeed < 0.35) { // Spawn a Slime
                         System.out.printf("%s at (%d, %d)\n", "Slime", i, j);
                         residents[i][j] = new Slime();
                     } else { // Spawn a random generic monster
