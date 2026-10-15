@@ -61,6 +61,7 @@ public class Setup
             System.out.println("Trey Taylor at (6, 7)");
             residents[6][7] = new TreyTaylor();
         }
+        
         int bartenderRow = (int)(Math.random() * ROWS);
         int bartenderCol = (int)(Math.random() * COLS);
         for (int i = 0; i < ROWS; i++) {
@@ -73,6 +74,9 @@ public class Setup
                     if (spawnSeed < 0.35) { // Spawn a Slime
                         System.out.printf("%s at (%d, %d)\n", "Slime", i + 1, j + 1);
                         residents[i][j] = new Slime();
+                    } else if (spawnSeed < 0.55) {
+                        System.out.printf("%s at (%d, %d)\n", "Barbie", i + 1, j + 1);
+                        residents[i][j] = new barbie(1000);
                     } else { // Spawn a random generic monster
                         String tempName = switch ((int)(Math.random() * 3)) {
                             case 0 -> "Goblin";
