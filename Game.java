@@ -84,7 +84,7 @@ public class Game
                                + "   Enemies left: " + countHostileLeft());
             System.out.println("(M)ove  (S)tats  (I)tems  (T)alk  (G)amble  (Q)uit");
             String choice = Input.ask("> ").toUpperCase();
-
+try {
             switch(choice.charAt(0)) {
                 case 'M' -> move();
                 case 'S' -> showStats();
@@ -94,6 +94,8 @@ public class Game
                 case 'Q' -> quit = true;
                 default -> System.out.println("I don't understand that choice.");
             }
+        }} catch (Exception e) {
+            System.out.println("You need to enter a choice.");
         }
 
         // The loop ended - figure out why.
