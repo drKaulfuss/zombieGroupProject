@@ -18,12 +18,6 @@ public class maxHealthPotion extends Item
         foo.heal(foo.getMaxHealth()-foo.getHealth());
     }
 
-    public boolean use(Character user)
-    {
-        System.out.println("You can't use the " + name + " right now.");
-        return false;
-    }
-
     public String toString()
     {
         return name + " (worth " + value + " gold)";
