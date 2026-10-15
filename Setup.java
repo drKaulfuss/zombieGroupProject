@@ -63,12 +63,12 @@ public class Setup
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLS; j++) {
                 if (i == bartenderRow && j == bartenderCol) {
-                    System.out.printf("%s at (%d, %d)\n", "Baddiella", bartenderRow, bartenderCol);
+                    System.out.printf("%s at (%d, %d)\n", "Baddiella", bartenderRow + 1, bartenderCol + 1);
                     residents[i][j] = new BaddieBartender();
                 } else if (Math.random() < 0.05) { // Spawn a random mob
                     double spawnSeed = Math.random();
                     if (spawnSeed < 0.35) { // Spawn a Slime
-                        System.out.printf("%s at (%d, %d)\n", "Slime", i, j);
+                        System.out.printf("%s at (%d, %d)\n", "Slime", i + 1, j + 1);
                         residents[i][j] = new Slime();
                     } else { // Spawn a random generic monster
                         String tempName = switch ((int)(Math.random() * 3)) {
@@ -89,7 +89,7 @@ public class Setup
 
         // TODO (Boss team): replace the Dragon with your Boss subclass
         int[] pos = randomPos(residents, ROWS, COLS);
-        System.out.println("Dragon at" + pos[0] + "   " + pos[1]);
+        System.out.println("Dragon at" + (pos[0] + 1) + " " + (pos[1] + 1));
         residents[pos[0]][pos[1]] = new Character("Dragon", 35, 4);
 
 
@@ -108,6 +108,8 @@ public class Setup
                 } else if (i == deatherRows[1] && j == deatherCols[1]) {
                     floorItems[i][j] = new noteForDeather("Mysterious Note", "Says \"Speak Deather Three Time to use the Deather\"", 1);
                 } else if (Math.random() < 0.1) {
+                    floorItems[i][j] = new Medpill();
+                } else if (Math.random() < 0.05) {
                     floorItems[i][j] = new Item("Shiny Rock", "It looks pretty but does nothing.", 5);
                 }
             }
