@@ -59,7 +59,7 @@ public class Setup
         //                       own subclasses (Goblin, Skeleton, ...)
         if (ROWS > 6 && COLS > 7) {
             System.out.println("Trey Taylor at (6, 7)");
-            residents[6][7] = new TreyTaylor();
+            residents[5][6] = new TreyTaylor();
         }
         
         int bartenderRow = (int)(Math.random() * ROWS);
