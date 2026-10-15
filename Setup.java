@@ -99,17 +99,19 @@ public class Setup
         // TODO (Items team): add Weapons, Coins, Potions, Armor, MagicItems...
         //     floorItems[0][2] = new Coin(10);
         //     floorItems[3][3] = new Weapon("Iron Sword", 4);
+        int[] deatherRows = {(int)(Math.random()*ROWS), (int)(Math.random()*ROWS)}; // First is the deather, second is the note
+        int[] deatherCols = {(int)(Math.random()*COLS), (int)(Math.random()*COLS)};
         for (int i = 0; i < Game.getRows(); i++) {
             for (int j = 0; j < Game.getCols(); j++) {
-                if (Math.random() < 0.1) {
+                if (i == deatherRows[0] && j == deatherCols[0]) {
+                    floorItems[i][j] = new Deather(1, 1);
+                } else if (i == deatherRows[1] && j == deatherCols[1]) {
+                    floorItems[i][j] = new noteForDeather("Mysterious Note", "Says \"Speak Deather Three Time to use the Deather\"", 1);
+                } else if (Math.random() < 0.1) {
                     floorItems[i][j] = new Item("Shiny Rock", "It looks pretty but does nothing.", 5);
                 }
             }
         }
-
-        pos = randomPos(residents, ROWS, COLS);
-        System.out.println("Deather at " + pos[0] + "   " + pos[1]);
-        floorItems[pos[0]][pos[1]] = new Deather(1, 1);
     }
 
 
