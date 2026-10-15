@@ -57,7 +57,10 @@ public class Setup
         // ------------------- CHARACTERS -------------------
         // TODO (Monster team):  replace these plain Characters with your
         //                       own subclasses (Goblin, Skeleton, ...)
-
+        if (ROWS > 6 && COLS > 7) {
+            System.out.println("Trey Taylor at (6, 7)");
+            residents[6][7] = new TreyTaylor();
+        }
         int bartenderRow = (int)(Math.random() * ROWS);
         int bartenderCol = (int)(Math.random() * COLS);
         for (int i = 0; i < ROWS; i++) {
