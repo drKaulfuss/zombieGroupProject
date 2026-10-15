@@ -34,7 +34,7 @@ public class Character
         this.maxHealth = maxHealth;
         this.health = maxHealth;        // starts at full health
         this.strength = strength;
-        this.gold = 0;
+        this.gold = 100;
         this.inventory = new ArrayList<Item>();
     }
 

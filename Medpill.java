@@ -7,14 +7,15 @@ class Medpill extends Item {
 
 public boolean use(Character user) {
   if (random.nextDouble() > 0.4) {
-   user.heal(-100)
+   user.heal(-100);
     return true;
   }
-  missingHealth = user.getMaxHealth()-user.getHealth();
+  int missingHealth = user.getMaxHealth()-user.getHealth();
   if (missingHealth > 0) {
    int healAmount = random.nextInt(missingHealth + 1);
    user.heal(healAmount);
   return true;
   }
+ return false;
 }
 }
