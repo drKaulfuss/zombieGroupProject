@@ -9,7 +9,7 @@ public class BaddieBartender extends Character {
 
     @Override
     public boolean isHostile() {
-        return false; // She is an interactive NPC, not a hostile monster
+        return true; // She is an interactive NPC, not a hostile monster
     }
 
     @Override
@@ -42,8 +42,8 @@ public class BaddieBartender extends Character {
                     if (countdrink >= 3) {
                         System.out.println("\nYou take the last sip and suddenly everything goes black...");
                         System.out.println("You hear a honey-like voice in your ear: 'Thank you for stopping by!'\n");
-
                         // Rob the player completely
+                
                         player.getInventory().clear();
                         player.addGold(-player.getGold()); // Sets gold to 0
 
