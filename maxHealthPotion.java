@@ -14,10 +14,11 @@ public class maxHealthPotion extends Item
         this.healingValue = healingValue;
     
     }
-    public void setHealing(Character foo){
-        foo.heal(foo.getMaxHealth()-foo.getHealth());
-    }
-
+   
+   public boolean use(Character user) {
+      user.heal(100);
+      return true;
+  }
     public String toString()
     {
         return name + " (worth " + value + " gold)";
