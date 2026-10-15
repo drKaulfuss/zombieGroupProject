@@ -112,6 +112,8 @@ public class Setup
                     floorItems[i][j] = new noteForDeather("Mysterious Note", "Says \"Speak Deather Three Time to use the Deather\"", 1);
                 } else if (Math.random() < 0.1) {
                     floorItems[i][j] = new Medpill();
+                } else if (Math.random() < 0.1) {
+                    floorItems[i][j] = new maxHealthPotion("Max Health Potion", "Heals you to max hp", 5, 5);
                 } else if (Math.random() < 0.05) {
                     floorItems[i][j] = new Item("Shiny Rock", "It looks pretty but does nothing.", 5);
                 }
