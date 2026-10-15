@@ -25,6 +25,7 @@ public class Game
     private static final int COLS = 20;
 
     private Character player;
+    private Gamble gamble = new Gamble();   // opened from anywhere with 'G'
 
     // 2D arrays: one spot for each square of the map
     private Character[][] residents;   // who lives in each square (null = nobody)
@@ -81,7 +82,7 @@ public class Game
             printMap();
             System.out.println(player + "   Gold: " + player.getGold()
                                + "   Enemies left: " + countHostileLeft());
-            System.out.println("(M)ove  (S)tats  (I)tems  (T)alk  (Q)uit");
+            System.out.println("(M)ove  (S)tats  (I)tems  (T)alk  (G)amble  (Q)uit");
             String choice = Input.ask("> ").toUpperCase();
 
             switch(choice.charAt(0)) {
@@ -89,6 +90,7 @@ public class Game
                 case 'S' -> showStats();
                 case 'I' -> useItem();
                 case 'T' -> talk();
+                case 'G' -> gamble.open(player);
                 case 'Q' -> quit = true;
                 default -> System.out.println("I don't understand that choice.");
             }
