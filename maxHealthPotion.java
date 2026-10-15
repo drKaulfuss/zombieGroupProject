@@ -14,46 +14,8 @@ public class maxHealthPotion extends Item
         this.healingValue = healingValue;
     
     }
-
-    public String getName()
-    {
-        return name;
-    }
-
-    public String getDescription()
-    {
-        return description;
-    }
-
-    public int getValue()
-    {
-        return value;
-    }
-
-   
-    public int getAttackBonus()
-    {
-        return 0;
-    }
-
-    public int getDefenseBonus()
-    {
-        return 0;
-    }
-    
-    public boolean onPickup(Character finder) {
-        System.out.println("You found: " + name + " - " + description);
-        return true;
-
-    }
     public void setHealing(Character foo){
         foo.heal(foo.getMaxHealth()-foo.getHealth());
-    }
-
-    public boolean use(Character user)
-    {
-        System.out.println("You can't use the " + name + " right now.");
-        return false;
     }
 
     public String toString()
