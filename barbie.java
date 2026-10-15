@@ -10,6 +10,10 @@ public class barbie extends Character {
     this.iq = i;   
 }
 
+public boolean isHostile () {
+  return false;
+}
+
 public void interact(Character Player) {
   Scanner input = new Scanner(System.in);
 
